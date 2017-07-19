@@ -1,0 +1,4 @@
+#Wed Jul 19 16:21:27 CST 2017
+base.0=/Volumes/work/workspace_android/ledai/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
+renamed.0=classes.dex
+file.0=/Volumes/work/workspace_android/ledai/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex
