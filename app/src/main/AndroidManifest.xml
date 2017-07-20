@@ -25,6 +25,13 @@
             android:windowSoftInputMode="stateHidden|adjustPan" >
         </activity>
 
+        <meta-data android:value="5970444a310c93405c000c8e" android:name="UMENG_APPKEY"/>
+        <meta-data android:value="Channel ID" android:name="UMENG_CHANNEL"/>
     </application>
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
 </manifest>

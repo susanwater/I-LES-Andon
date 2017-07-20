@@ -35,6 +35,7 @@ public class HomeFragment extends BaseFragment {
     public void initView() {
 
         btn = (Button)findViewById(R.id.btn);
+
         btn.setOnClickListener(this);
 
     }
@@ -50,6 +51,7 @@ public class HomeFragment extends BaseFragment {
                 MineFragment exampleFragment = new MineFragment();
                 startFragmentForResult(exampleFragment,1001);
 
+                int i;
                 Util.showToast(getActivity(),"this is me");
 
                 break;
