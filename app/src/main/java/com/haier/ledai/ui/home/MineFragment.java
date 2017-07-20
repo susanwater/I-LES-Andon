@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.haier.ledai.R;
-import com.haier.ledai.ui.base.BaseFragment;
 import com.haier.ledai.ui.base.ListViewFragment;
 
 import framework.widget.HRFrameLayout4Loading;
@@ -41,7 +40,7 @@ public class MineFragment extends ListViewFragment {
         swipeRefresh = (SwipeRefresh)findViewById(R.id.sr);
         loading = (HRFrameLayout4Loading)findViewById(R.id.loading);
 
-        loading.showExceptionView();
+//        loading.showExceptionView();
 
         btn.setOnClickListener(this);
         super.initView();
