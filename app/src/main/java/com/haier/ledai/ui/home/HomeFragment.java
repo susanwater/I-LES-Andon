@@ -50,6 +50,7 @@ public class HomeFragment extends BaseFragment {
                 MineFragment exampleFragment = new MineFragment();
                 startFragmentForResult(exampleFragment,1001);
 
+                int i;
                 Util.showToast(getActivity(),"this is me");
 
                 break;
