@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color_gray">
+    <com.framework.widget.HRTitleView
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/title_bar_default_height"
+        app:title_text="@string/borrow_record"
+        app:title_btn_right_text=""
+        android:id="@+id/title_view"
+        >
+    </com.framework.widget.HRTitleView>
+    <com.framework.widget.HRFrameLayout4Loading
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/loading_view">
+
+
+    </com.framework.widget.HRFrameLayout4Loading>
+
+
+</LinearLayout>

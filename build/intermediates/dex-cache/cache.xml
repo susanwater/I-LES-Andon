@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Volumes/work/workspace_android/Ledai-android2/app/libs/ormlite-android-4.48.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="afa06f539a4026c10b247386312aa67404b80a16">
+        <dex dex="/Volumes/work/workspace_android/Ledai-android2/app/build/intermediates/pre-dexed/debug/ormlite-android-4.48_df52f7b4cebffcbab5e9e0d83bf6005282a5a710.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/work/workspace_android/Ledai-android2/app/libs/ormlite-core-4.48.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e579bd2905d0399af5029aaaf9817d5fa0ca88a5">
+        <dex dex="/Volumes/work/workspace_android/Ledai-android2/app/build/intermediates/pre-dexed/debug/ormlite-core-4.48_133f8fa5071cbd1bc33353be2fb80715f6e8cc7c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Volumes/work/workspace_android/Ledai-android2/app/libs/jackson-all-1.9.3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="64b75f26d6b46f23c1c4297d8fdda15db47fb10c">
+        <dex dex="/Volumes/work/workspace_android/Ledai-android2/app/build/intermediates/pre-dexed/debug/jackson-all-1.9.3_dc34cc2834c403eb82d17077e5c4266c01c859de.jar" />
+    </item>
+
+</items>
