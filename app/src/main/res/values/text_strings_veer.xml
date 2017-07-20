@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--layout/activity_borrow_record_list.xml-->
+    <string name="borrow_record">借贷记录</string>
+    <!--layout/listitem_borrow_record.xml-->
+    <string name="borrow_values">借贷金额</string>
+    <string name="borrow_deadline">借贷期限</string>
+    <string name="borrow_time">借贷时间</string>
+</resources>
