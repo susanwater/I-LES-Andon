@@ -1,8 +1,6 @@
 package com.haier.ledai.ui.home;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,13 +8,13 @@ import android.widget.Button;
 
 import com.haier.ledai.R;
 import com.haier.ledai.ui.base.BaseFragment;
-import com.haier.ledai.util.Util;
+
+import org.codehaus.jackson.map.deser.ValueInstantiators;
 
 /**
- * Created by Admin on 17/6/1.
+ * Created by Admin on 17/7/20.
  */
-public class HomeFragment extends BaseFragment {
-
+public class TestFragment extends BaseFragment {
 
     Button btn;
 
@@ -28,7 +26,7 @@ public class HomeFragment extends BaseFragment {
 
         }
         //返回布局   命名 类型_页面意思
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        return inflater.inflate(R.layout.fragment_test, container, false);
     }
 
     @Override
@@ -44,38 +42,14 @@ public class HomeFragment extends BaseFragment {
         super.doOnClick(v);
         int id = v.getId();
         switch (id){
-
             case R.id.btn:
 
-                TestFragment testFragment = new TestFragment();
-                startFragment(testFragment);
-
-//                MineFragment exampleFragment = new MineFragment();
-//                startFragmentForResult(exampleFragment,1001);
-//
-//                Util.showToast(getActivity(),"this is me");
+                TestFragment2 testFragment2 = new TestFragment2();
+                startFragment(testFragment2);
 
                 break;
-
             default:
                 break;
-
         }
-
-
     }
-
-    @Override
-    public void onFragmentResult(int requestCode, int resultCode, Intent data) {
-
-        if (requestCode==1001){
-            Log.d("ss","");
-            boolean ds = data.getBooleanExtra("ff",true);
-            Util.showToast(getActivity(),ds?"ss":"ff");
-            int g;
-        }
-
-        super.onFragmentResult(requestCode, resultCode, data);
-    }
-
 }

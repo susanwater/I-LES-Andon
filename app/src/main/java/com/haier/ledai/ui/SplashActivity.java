@@ -26,6 +26,8 @@ public class SplashActivity extends BaseActivity {
 
         initView();
 
+        int i;
+
     }
 
     private void initView() {
