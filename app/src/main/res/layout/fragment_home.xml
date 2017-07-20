@@ -16,11 +16,7 @@
         android:id="@+id/title_view"
         />
 
-    <com.framework.widget.SwipeRefresh
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-    </com.framework.widget.SwipeRefresh>
 
     <Button
         android:layout_width="match_parent"
