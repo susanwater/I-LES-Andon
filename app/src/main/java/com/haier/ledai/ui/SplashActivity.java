@@ -19,7 +19,6 @@ public class SplashActivity extends BaseActivity {
     private View mView;
     private AlphaAnimation aa;
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
