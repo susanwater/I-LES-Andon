@@ -35,6 +35,7 @@ public class HomeFragment extends BaseFragment {
     public void initView() {
 
         btn = (Button)findViewById(R.id.btn);
+
         btn.setOnClickListener(this);
 
     }
