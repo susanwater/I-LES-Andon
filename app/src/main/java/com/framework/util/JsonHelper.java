@@ -35,6 +35,7 @@ public class JsonHelper<E> {
 			ObjectMapper mapper = new ObjectMapper();
 			mapper.configure(Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 			mapper.configure(Feature.FAIL_ON_NULL_FOR_PRIMITIVES, false);
+			mapper.enableDefaultTyping();
 			parseTarget = (E) mapper.readValue(jsonData, E);
 		} catch (Exception e2) {
 			e2.printStackTrace();

@@ -19,7 +19,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.haier.ledai.R;
+import com.yangda.andon.R;
 
 public class HRFrameLayout4Loading extends FrameLayout {
 

@@ -17,11 +17,17 @@ import android.util.TypedValue;
 import android.view.Display;
 import android.view.WindowManager;
 
-import com.haier.ledai.MyApplication;
+import com.yangda.andon.MyApplication;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
+import java.net.NetworkInterface;
+import java.util.Collections;
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -38,18 +44,14 @@ public class DeviceHelper {
     }
 
     /**
-     *
      * 获取设备 SDK版本号
-     *
      */
     public static int getSDKVersionInt() {
         return Build.VERSION.SDK_INT;
     }
 
     /**
-     *
      * 获取设备的IMEI号
-     *
      */
     public static String getIMEI() {
         TelephonyManager teleMgr = (TelephonyManager) MyApplication.getApplication()
@@ -60,7 +62,7 @@ public class DeviceHelper {
     /**
      * 判断是否arm架构cpu
      *
-     * @return	arm返回true，否则false
+     * @return arm返回true，否则false
      */
     public static boolean isARMCPU() {
         String cpu = Build.CPU_ABI;
@@ -68,9 +70,7 @@ public class DeviceHelper {
     }
 
     /**
-     *
      * 获取设备的IMSI号
-     *
      */
     public static String getIMSI() {
         TelephonyManager teleMgr = (TelephonyManager) MyApplication.getApplication()
@@ -90,85 +90,175 @@ public class DeviceHelper {
 
         if (IMSI.startsWith("46000") || IMSI.startsWith("46002") || IMSI.startsWith("46007")) {
             return "CMCC";
-        }
-        else if (IMSI.startsWith("46001")) {
+        } else if (IMSI.startsWith("46001")) {
             return "CUCC";
-        }
-        else if (IMSI.startsWith("46003")) {
+        } else if (IMSI.startsWith("46003")) {
             return "CTCC";
-        }else {
+        } else {
             return "UNKNOWN";
         }
     }
 
     /**
      * 获取屏幕分辨率
+     *
      * @param activity
      * @return
      */
     public static int[] getScreenDispaly(Activity activity) {
-        WindowManager winManager=(WindowManager)activity.getSystemService(Context.WINDOW_SERVICE);
-        Display display=winManager.getDefaultDisplay();
-        int result[] = { display.getWidth(), display.getHeight() };
+        WindowManager winManager = (WindowManager) activity.getSystemService(Context.WINDOW_SERVICE);
+        Display display = winManager.getDefaultDisplay();
+        int result[] = {display.getWidth(), display.getHeight()};
         return result;
     }
 
-    public static String getDeviceId(){
+    public static String getDeviceId() {
         try {
             TelephonyManager tm = (TelephonyManager) MyApplication.getApplication()
                     .getSystemService(Context.TELEPHONY_SERVICE);
             return tm.getDeviceId();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             return "";
         }
     }
 
 
+    /**
+     * 获取MAC地址
+     *
+     * @param context
+     * @return
+     */
+    public static String getMacAddress(Context context) {
+        String mac = null;
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            mac = getMacDefault(context);
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+            mac = getMacAddress();
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            mac = getMacFromHardware();
+        }
+        return mac;
+    }
+
+    /**
+     * Android 6.0（包括） - Android 7.0（不包括）
+     *
+     * @return
+     */
+    private static String getMacAddress() {
+        String WifiAddress = null;
+        try {
+            WifiAddress = new BufferedReader(new FileReader(new File("/sys/class/net/wlan0/address"))).readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return WifiAddress;
+    }
+
+    /**
+     * 遍历循环所有的网络接口，找到接口是 wlan0
+     * 必须的权限 <uses-permission android:name="android.permission.INTERNET" />
+     *
+     * @return
+     */
+    private static String getMacFromHardware() {
+        String mac = null;
+        try {
+            List<NetworkInterface> all = Collections.list(NetworkInterface.getNetworkInterfaces());
+            for (NetworkInterface nif : all) {
+                if (!nif.getName().equalsIgnoreCase("wlan0")) continue;
+
+                byte[] macBytes = nif.getHardwareAddress();
+                if (macBytes == null) {
+                    return "";
+                }
+
+                StringBuilder res1 = new StringBuilder();
+                for (byte b : macBytes) {
+                    res1.append(String.format("%02X:", b));
+                }
+
+                if (res1.length() > 0) {
+                    res1.deleteCharAt(res1.length() - 1);
+                }
+                mac = res1.toString();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return mac;
+    }
+
+    /**
+     * Android  6.0 之前（不包括6.0）
+     * 必须的权限  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+     *
+     * @param context
+     * @return
+     */
+    private static String getMacDefault(Context context) {
+        String mac = null;
+        if (context == null) {
+            return mac;
+        }
+
+        WifiManager wifi = (WifiManager) context.getApplicationContext()
+                .getSystemService(Context.WIFI_SERVICE);
+        if (wifi == null) {
+            return mac;
+        }
+        WifiInfo info = null;
+        try {
+            info = wifi.getConnectionInfo();
+        } catch (Exception e) {
+        }
+        if (info == null) {
+            return null;
+        }
+        mac = info.getMacAddress();
+        if (!TextUtils.isEmpty(mac)) {
+            mac = mac.toUpperCase(Locale.ENGLISH);
+        }
+        return mac;
+    }
+
+
     public static String getDeviceInfoForUMeng() {
+        String mac = null;
         try {
             org.json.JSONObject json = new org.json.JSONObject();
-            TelephonyManager tm = (TelephonyManager) MyApplication.getApplication()
-                    .getSystemService(Context.TELEPHONY_SERVICE);
-
+            TelephonyManager tm = (TelephonyManager) MyApplication.getApplication().getSystemService(Context.TELEPHONY_SERVICE);
             String device_id = tm.getDeviceId();
-
-            WifiManager wifi = (WifiManager) MyApplication.getApplication()
-                    .getSystemService(Context.WIFI_SERVICE);
-
-            String mac = wifi.getConnectionInfo().getMacAddress();
+            WifiManager wifi = (WifiManager) MyApplication.getApplication().getSystemService(Context.WIFI_SERVICE);
+            mac = wifi.getConnectionInfo().getMacAddress();
             json.put("mac", mac);
-
             if (TextUtils.isEmpty(device_id)) {
                 device_id = mac;
             }
-
             if (TextUtils.isEmpty(device_id)) {
-                device_id = android.provider.Settings.Secure.getString(
-                        MyApplication.getApplication().getContentResolver(),
-                        android.provider.Settings.Secure.ANDROID_ID);
+                device_id = android.provider.Settings.Secure.getString(MyApplication.getApplication().getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
             }
-
             json.put("device_id", device_id);
-
             return json.toString();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return mac;
     }
+
 
     /**
      * 获取设备号 wifi mac + imei + cpu serial
      *
      * @return 设备号
-     *
      */
     public static String getMobileUUID() {
         String uuid = "";
         // 先获取mac
         WifiManager wifiMgr = (WifiManager) MyApplication.getApplication().getSystemService(Context.WIFI_SERVICE);
-		/* 获取mac地址 */
+        /* 获取mac地址 */
         if (wifiMgr != null) {
             WifiInfo info = wifiMgr.getConnectionInfo();
             if (info != null && info.getMacAddress() != null) {
@@ -184,7 +274,7 @@ public class DeviceHelper {
         // 最后再加上cpu
         String str = "", strCPU = "", cpuAddress = "";
         try {
-            String[] args = { "/system/bin/cat", "/proc/cpuinfo" };
+            String[] args = {"/system/bin/cat", "/proc/cpuinfo"};
             ProcessBuilder cmd = new ProcessBuilder(args);
             Process pp = cmd.start();
             InputStreamReader ir = new InputStreamReader(pp.getInputStream());
@@ -240,7 +330,7 @@ public class DeviceHelper {
         return channel;
     }
 
-    public  static String getAppVersion(){
+    public static String getAppVersion() {
         String version = "";
         PackageManager packageManager = MyApplication.getApplication().getPackageManager();
         try {
@@ -252,7 +342,8 @@ public class DeviceHelper {
 
         return version;
     }
-    public  static int getAppVersionCode(){
+
+    public static int getAppVersionCode() {
         int version = 0;
         PackageManager packageManager = MyApplication.getApplication().getPackageManager();
         try {
@@ -265,7 +356,7 @@ public class DeviceHelper {
         return version;
     }
 
-    public static String getNetworkIP(){
+    public static String getNetworkIP() {
 
         NetworkInfo localNetworkInfo = ((ConnectivityManager) MyApplication.getApplication().getSystemService("connectivity")).getActiveNetworkInfo();
         if ((localNetworkInfo == null))
@@ -273,7 +364,7 @@ public class DeviceHelper {
 
         WifiManager wifiManager = (WifiManager) MyApplication.getApplication().getSystemService(Context.WIFI_SERVICE);
         WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-        if(wifiInfo == null)
+        if (wifiInfo == null)
             return null;
 
         int ipAddress = wifiInfo.getIpAddress();
@@ -292,19 +383,14 @@ public class DeviceHelper {
      * @return
      * @see [类、类#方法、类#成员]
      */
-    public static String getNetworkType()
-    {
+    public static String getNetworkType() {
         String strNetworkType = "";
         NetworkInfo networkInfo = ((ConnectivityManager) MyApplication.getApplication().
                 getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected())
-        {
-            if (networkInfo.getType() == ConnectivityManager.TYPE_WIFI)
-            {
+        if (networkInfo != null && networkInfo.isConnected()) {
+            if (networkInfo.getType() == ConnectivityManager.TYPE_WIFI) {
                 strNetworkType = "WIFI";
-            }
-            else if (networkInfo.getType() == ConnectivityManager.TYPE_MOBILE)
-            {
+            } else if (networkInfo.getType() == ConnectivityManager.TYPE_MOBILE) {
                 String _strSubTypeName = networkInfo.getSubtypeName();
 
                 // TD-SCDMA   networkType is 17
@@ -333,12 +419,9 @@ public class DeviceHelper {
                         break;
                     default:
                         // http://baike.baidu.com/item/TD-SCDMA 中国移动 联通 电信 三种3G制式
-                        if (_strSubTypeName.equalsIgnoreCase("TD-SCDMA") || _strSubTypeName.equalsIgnoreCase("WCDMA") || _strSubTypeName.equalsIgnoreCase("CDMA2000"))
-                        {
+                        if (_strSubTypeName.equalsIgnoreCase("TD-SCDMA") || _strSubTypeName.equalsIgnoreCase("WCDMA") || _strSubTypeName.equalsIgnoreCase("CDMA2000")) {
                             strNetworkType = "3G";
-                        }
-                        else
-                        {
+                        } else {
                             strNetworkType = _strSubTypeName;
                         }
                         break;

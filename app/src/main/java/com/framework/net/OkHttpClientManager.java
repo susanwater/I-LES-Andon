@@ -8,8 +8,8 @@ import android.os.Looper;
 import android.widget.ImageView;
 
 import com.framework.util.JsonUtil;
-import com.haier.ledai.system.Preferences;
-import com.haier.ledai.util.Util;
+import com.yangda.andon.system.Preferences;
+import com.yangda.andon.util.Util;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.FormEncodingBuilder;
@@ -55,12 +55,12 @@ public class OkHttpClientManager
     {
         mOkHttpClient = new OkHttpClient();
         if (Preferences.DEBUG) {
-            mOkHttpClient.setConnectTimeout(60, TimeUnit.SECONDS);
-            mOkHttpClient.setReadTimeout(60, TimeUnit.SECONDS);
-            mOkHttpClient.setWriteTimeout(60, TimeUnit.SECONDS);
+            mOkHttpClient.setConnectTimeout(30, TimeUnit.SECONDS);
+            mOkHttpClient.setReadTimeout(30, TimeUnit.SECONDS);
+            mOkHttpClient.setWriteTimeout(30, TimeUnit.SECONDS);
         }
         else {
-            mOkHttpClient.setConnectTimeout(30, TimeUnit.SECONDS);
+            mOkHttpClient.setConnectTimeout(20, TimeUnit.SECONDS);
             mOkHttpClient.setReadTimeout(20, TimeUnit.SECONDS);
             mOkHttpClient.setWriteTimeout(20, TimeUnit.SECONDS);
         }

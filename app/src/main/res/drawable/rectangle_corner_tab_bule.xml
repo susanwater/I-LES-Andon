@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 边缘线条颜色 -->
+    <stroke
+        android:width="1dp"
+        android:color="#009dff" />
+
+    <!-- <corners android:radius="5dp" />-->
+
+
+    <solid android:color="#009dff" />
+
+    <padding
+        android:bottom="10dp"
+        android:left="15dp"
+        android:right="15dp"
+        android:top="10dp" />
+
+
+</shape>

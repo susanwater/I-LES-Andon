@@ -11,7 +11,7 @@ import android.view.ViewConfiguration;
 import android.widget.AbsListView;
 import android.widget.ListView;
 
-import com.haier.ledai.R;
+import com.yangda.andon.R;
 
 /**
  * Created by Admin on 17/7/19.

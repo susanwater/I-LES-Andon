@@ -79,4 +79,17 @@
     <color name="index_text_item_left">#ff6633</color>
 
     <color name="recommend_text">#480202</color>
+
+
+    <!--  andon  颜色管理文件    -->
+
+
+
+    <color name="background_color_blue">#000d32</color>
+    <color name="color_blue_light">#0d2b72</color>
+    <color name="white_light">#c4e3fd</color>
+    <color name="color_blue_light_1">#7dbefd</color>
+
+
+
 </resources>

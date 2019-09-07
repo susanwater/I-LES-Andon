@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color_blue"
+    android:orientation="vertical">
+
+    <!-- title-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="180dp"
+                android:layout_height="60dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/logo" />
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_width="450dp"
+            android:layout_height="60dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center|center_vertical"
+            android:background="@mipmap/title_background"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="i-LES Andon 生产信息采集系统"
+            android:textColor="@color/white"
+            android:textSize="24dp" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_workshopName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="@color/white_light"
+                    android:textSize="24dp" />
+
+                <TextView
+                    android:id="@+id/tv_lineName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="@color/white_light"
+                    android:textSize="24dp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/llt_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/close" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:text="退出"
+                    android:textColor="@color/white_light"
+                    android:textSize="24dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp"
+        android:orientation="vertical">
+
+        <!--安灯异常信息-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@mipmap/brg"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="安灯异常信息录入"
+                android:textColor="@color/color_blue_light_1"
+                android:textSize="18dp" />
+
+            <!--     <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     android:orientation="horizontal">
+
+                     <LinearLayout
+                         android:layout_width="wrap_content"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:gravity="center"
+                         android:orientation="vertical">
+
+                         <ImageView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_gravity="center"
+                             android:src="@mipmap/safety_yellow" />
+
+                         <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_gravity="center"
+                             android:layout_marginTop="10dp"
+                             android:gravity="center"
+                             android:text="安全"
+                             android:textColor="@color/white_light"
+                             android:textSize="10dp" />
+
+                     </LinearLayout>
+
+                     <LinearLayout
+                         android:layout_width="wrap_content"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:gravity="center"
+                         android:orientation="vertical">
+
+                         <ImageView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_gravity="center"
+                             android:src="@mipmap/zl_bright" />
+
+                         <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_gravity="center"
+                             android:layout_marginTop="10dp"
+                             android:gravity="center"
+                             android:text="质量"
+                             android:textColor="@color/white_light"
+                             android:textSize="10dp" />
+
+                     </LinearLayout>
+
+                     <LinearLayout
+                         android:layout_width="wrap_content"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:gravity="center"
+                         android:orientation="vertical">
+
+                         <ImageView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_gravity="center"
+                             android:src="@mipmap/wl_bright" />
+
+                         <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_gravity="center"
+                             android:layout_marginTop="10dp"
+                             android:gravity="center"
+                             android:text="物料"
+                             android:textColor="@color/white_light"
+                             android:textSize="10dp" />
+
+                     </LinearLayout>
+
+                     <LinearLayout
+                         android:layout_width="wrap_content"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:gravity="center"
+                         android:orientation="vertical">
+
+                         <ImageView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_gravity="center"
+                             android:src="@mipmap/zy_bright" />
+
+                         <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_gravity="center"
+                             android:layout_marginTop="10dp"
+                             android:gravity="center"
+                             android:text="工艺"
+                             android:textColor="@color/white_light"
+                             android:textSize="10dp" />
+
+                     </LinearLayout>
+
+                     <LinearLayout
+                         android:layout_width="wrap_content"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:gravity="center"
+                         android:orientation="vertical">
+
+                         <ImageView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_gravity="center"
+                             android:src="@mipmap/gjsb_bright" />
+
+                         <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_gravity="center"
+                             android:layout_marginTop="10dp"
+                             android:gravity="center"
+                             android:text="工具设备"
+                             android:textColor="@color/white_light"
+                             android:textSize="10dp" />
+
+                     </LinearLayout>
+
+                 </LinearLayout>-->
+
+            <LinearLayout
+                android:id="@+id/llt_yichang"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+               <!-- <android.support.v7.widget.RecyclerView
+                    android:id="@+id/exception_recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:visibility="visible"
+                    android:layout_marginRight="15dp" />-->
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <!--信息控制-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="@mipmap/brg"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="精益生产信息控制"
+                android:textColor="@color/color_blue_light_1"
+                android:textSize="18dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/img_start"
+                        android:layout_width="180dp"
+                        android:layout_height="180dp"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/fallow" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:drawableLeft="@drawable/shape_circle_gray"
+                            android:drawablePadding="10dp"
+                            android:text="开始"
+                            android:textColor="@color/white_light"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:drawableLeft="@drawable/shape_circle_blue"
+                            android:drawablePadding="10dp"
+                            android:text="下班"
+                            android:textColor="@color/white_light"
+                            android:textSize="14dp" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llt_gono"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/img_gono"
+                        android:layout_width="180dp"
+                        android:layout_height="180dp"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/start" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:drawableLeft="@drawable/shape_circle_gray"
+                            android:drawablePadding="10dp"
+                            android:text="继续"
+                            android:textColor="@color/white_light"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:drawableLeft="@drawable/shape_circle_blue"
+                            android:drawablePadding="10dp"
+                            android:text="休息"
+                            android:textColor="@color/white_light"
+                            android:textSize="18dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llt_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/img_cancel"
+                        android:layout_width="180dp"
+                        android:layout_height="180dp"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/cancel_gray"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:text="取消生产"
+                        android:textColor="@color/white_light"
+                        android:textSize="18dp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/llt_wuliao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/img_wuliao"
+                        android:layout_width="180dp"
+                        android:layout_height="180dp"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/zy_gray"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:text="拉取物料信息"
+                        android:textColor="@color/white_light"
+                        android:textSize="18dp" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

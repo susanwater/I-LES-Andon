@@ -18,8 +18,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.framework.util.DeviceHelper;
-import com.haier.ledai.R;
-import com.haier.ledai.ui.base.BaseActivity;
+import com.yangda.andon.R;
+import com.yangda.andon.ui.base.BaseActivity;
 
 public class HRTitleView extends RelativeLayout implements View.OnClickListener{
 

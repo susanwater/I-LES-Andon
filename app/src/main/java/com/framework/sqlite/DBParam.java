@@ -21,7 +21,7 @@ package com.framework.sqlite;
 public class DBParam
 {
     /** 数据库名字 */
-    private String dbName = "text.db";
+    private String dbName = "text.com.yangda.andon";
     
     /** 数据库版本,默认为1 */
     private int dbVersion = 1;

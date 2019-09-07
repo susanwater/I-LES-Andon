@@ -1,7 +1,7 @@
 package com.framework.util.async;
 
 import com.framework.util.RandomUtil;
-import com.haier.ledai.net.HarNet;
+import com.yangda.andon.net.HarNet;
 
 /**
  * Created by Admin on 17/1/20.
