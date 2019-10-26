@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="home_product">生产信息</string>
+    <string name="home_lamp">安灯信息</string>
+    <string name="home_order">订单列表</string>
+    <string name="home_help">帮助信息</string>
+
+</resources>

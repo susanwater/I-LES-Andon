@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- api -->
+
+    <!--生产服务器-->
+    <string name="server_url">http://118.89.188.210:8000</string>
+    <!--准生产服务器-->
+    <string name="server_test_url">http://118.89.188.210:8000</string>
+    <string name="server_test_url2">http://123.57.246.191/jojo/missionbook/v1</string>
+
+
+
+
+
+</resources>
